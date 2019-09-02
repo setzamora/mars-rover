@@ -30,8 +30,12 @@ public class Event {
 
     private Event() { }
 
-    public static Event create(String name, String description) {
+    private static Event create(String name, String description) {
         return new Event(name, description);
+    }
+
+    public static void fire(String name, String description) {
+        EventStore.getInstance().add(create(name, description));
     }
 
     public String getName() {

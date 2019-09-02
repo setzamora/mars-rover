@@ -26,5 +26,7 @@ public class MarsTerrainView extends TerrainView {
             }
             System.out.println(lineBuffer.toString());
         }
+        System.out.println();
+        System.out.println(String.format("Rover is facing: %s", rover.getDirection()));
     }
 }

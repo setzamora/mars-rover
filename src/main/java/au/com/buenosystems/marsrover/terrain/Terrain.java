@@ -62,25 +62,5 @@ public abstract class Terrain {
         return positions;
     }
 
-    public boolean isWithinBounds(Coordinates coordinates) {
-        if (isWithinXBounds(coordinates)
-            && isWithinYBounds(coordinates)) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isWithinBounds(Position position) {
-        return isWithinBounds(position.getCoordinates());
-    }
-
-    private boolean isWithinXBounds(Coordinates coordinates) {
-        return coordinates.getX() >= 0 && coordinates.getX() < lengthX;
-    }
-
-    private  boolean isWithinYBounds(Coordinates coordinates) {
-        return coordinates.getY() >= 0 && coordinates.getY() < lengthY;
-    }
-
     public abstract String getName();
 }

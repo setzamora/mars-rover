@@ -78,4 +78,9 @@ public class MarsPlateauTests {
         Position position = marsPlateau.getPositions()[9][0];
         assertEquals(Surface.PLAIN, position.getSurface());
     }
+
+    @Test
+    public void getNameReturnsPlateau() {
+        assertEquals("Plateau", marsPlateau.getName());
+    }
 }

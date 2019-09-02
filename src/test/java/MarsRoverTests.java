@@ -1,5 +1,6 @@
 import au.com.buenosystems.marsrover.MarsPlateau;
 import au.com.buenosystems.marsrover.MarsRover;
+import au.com.buenosystems.marsrover.MarsRoverController;
 import au.com.buenosystems.marsrover.MarsRoverDirection;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MarsRoverTests {
@@ -101,5 +101,10 @@ public class MarsRoverTests {
 
         marsRover.rotateRight();
         assertEquals(MarsRoverDirection.North, marsRover.getDirection());
+    }
+
+    @Test
+    public void testGetRoverControllerReturnsMarsRoverController() {
+        assertTrue(marsRover.getRoverController() instanceof MarsRoverController);
     }
 }

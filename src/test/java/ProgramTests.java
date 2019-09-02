@@ -1,3 +1,6 @@
+import au.com.buenosystems.marsrover.command.RoverCommand;
+import au.com.buenosystems.marsrover.command.RoverCommandStats;
+import au.com.buenosystems.marsrover.helper.ProgramHelper;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,48 +9,48 @@ public class ProgramTests {
 
     @Test
     public void testIsRoverOperationalReturnsTrue() {
-        assertTrue(Program.isRoverOperational("LMRMRLMRLMRLMR"));
+        assertTrue(RoverCommand.isOperational("LMRMRLMRLMRLMR"));
     }
 
     @Test
     public void testIsRoverOperationalReturnsFalse() {
-        assertFalse(Program.isRoverOperational("X"));
-        assertFalse(Program.isRoverOperational("x"));
+        assertFalse(RoverCommand.isOperational("X"));
+        assertFalse(RoverCommand.isOperational("x"));
     }
 
     @Test
     public void testIsRoverOperationalDoesNotReturnTrue() {
-        assertTrue(!Program.isRoverOperational("X"));
-        assertTrue(!Program.isRoverOperational("x"));
+        assertTrue(!RoverCommand.isOperational("X"));
+        assertTrue(!RoverCommand.isOperational("x"));
     }
 
     @Test
     public void testIsRoverOperationalDoesNotReturnFalse() {
-        assertFalse(!Program.isRoverOperational("MMLRMLRMLRMRLMxX"));
+        assertFalse(!RoverCommand.isOperational("MMLRMLRMLRMRLMxX"));
     }
 
     @Test
-    public void testIsTerrainPathSpecifiedReturnsTrue() {
+    public void testIsArgumentSpecifiedReturnsTrue() {
         String[] args = { "C:\\Some\\Arbitrary\\Path\\Terrain.txt" };
-        assertTrue(Program.isTerrainPathSpecified(args));
+        assertTrue(ProgramHelper.isArgumentSpecified(args));
     }
 
     @Test
-    public void testIsTerrainPathSpecifiedEmptyReturnsFalse() {
+    public void testIsArgumentSpecifiedEmptyReturnsFalse() {
         String[] args = { "" };
-        assertFalse(Program.isTerrainPathSpecified(args));
+        assertFalse(ProgramHelper.isArgumentSpecified(args));
     }
 
     @Test
-    public void testIsTerrainPathSpecifiedNullReturnsFalse() {
+    public void testIsArgumentSpecifiedNullReturnsFalse() {
         String[] args = null;
-        assertFalse(Program.isTerrainPathSpecified(args));
+        assertFalse(ProgramHelper.isArgumentSpecified(args));
     }
 
     @Test
     public void testDisplayCommandStatsSucceeds() {
         try {
-            Program.displayCommandStats();
+            RoverCommandStats.display();
         } catch (Exception e) {
             assertTrue(false);
         }
@@ -57,7 +60,7 @@ public class ProgramTests {
     public void testGetTerrainPathReturnsCustomPath() {
         String[] args = { "C:\\Some\\Arbitrary\\Path\\Terrain.txt" };
         try {
-            assertEquals("C:\\Some\\Arbitrary\\Path\\Terrain.txt", Program.getTerrainPath(args).toString());
+            assertEquals("C:\\Some\\Arbitrary\\Path\\Terrain.txt", ProgramHelper.getTerrainPath(args).toString());
         } catch (Exception e) {
             assertTrue(false);
         }
@@ -67,7 +70,7 @@ public class ProgramTests {
     public void testGetTerrainPathDoesNotReturnCustomPath() {
         String[] args = { "" };
         try {
-            assertNotEquals("C:\\Some\\Arbitrary\\Path\\Terrain.txt", Program.getTerrainPath(args).toString());
+            assertNotEquals("C:\\Some\\Arbitrary\\Path\\Terrain.txt", ProgramHelper.getTerrainPath(args).toString());
         } catch (Exception e) {
             assertTrue(false);
         }
